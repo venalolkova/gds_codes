@@ -16,6 +16,11 @@ coupler_params = {
     'n_gratings': 20,
     'taper_length': 16.
 }
+def inout(length, bending_radius):
+    coupler_left=GratingCoupler.make_traditional_coupler(origin=[0, 0], **coupler_params)
+    wg1 = Waveguide.make_at_port(coupler_left.port)
+    wg1.add_straight_segment(10)
+    wg1.add_bend(-pi/2, 40)
 def AMZI(difference, length, name):
     coupler_left=GratingCoupler.make_traditional_coupler(origin=[0, 0], **coupler_params)
     wg1 = Waveguide.make_at_port(coupler_left.port)
